@@ -39,7 +39,4 @@ const productDetails = (firstProduct, secondProduct) => [
   },
 ];
 
-const produto = productDetails('a', 'b');
-console.log(produto[0].details.productId.endsWith('123'));
-
 module.exports = productDetails;
