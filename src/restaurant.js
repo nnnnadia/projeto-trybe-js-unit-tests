@@ -46,15 +46,11 @@
 */
 
 // PASSO 1: Crie uma função `createMenu()` que, dado um objeto passado por parâmetro, retorna um objeto com o seguinte formato: { fetchMenu: () => objetoPassadoPorParametro }.
-function createMenu(menuObj) {
-  return ({ fetchMenu: () => menuObj, consumption: [] });
-}
 //------------------------------------------------------------------------------------------
 // Agora faça o TESTE 4 no arquivo `tests/restaurant.spec.js`.
 // PASSO 2: Adicione ao objeto retornado por `createMenu` uma chave `consumption` que, como valor inicial, tem um array vazio.
 //
 // Agora faça o TESTE 5 no arquivo `tests/restaurant.spec.js`.
-
 //------------------------------------------------------------------------------------------
 
 // PASSO 3: Crie uma função, separada da função `createMenu()`, que, dada uma string recebida por parâmetro, 
@@ -71,6 +67,19 @@ function createMenu(menuObj) {
 // const orderFromMenu = (request) => // Lógica que adiciona à chave `consumption` de `restaurant` a string recebida no parâmetro `request`. 
 // // Essa função deve ser associada à chave `order` de `restaurant`
 // ```
+
+const orderFromMenu = (request, createdMenu) => {
+  createdMenu.consumption.push(request);
+};
+
+function createMenu(menuObj) {
+  return ({ 
+    fetchMenu: () => menuObj,
+    consumption: [],
+    order: orderFromMenu,
+  });
+}
+
 // Agora faça o TESTE 6 no arquivo `tests/restaurant.spec.js`.
 
 //------------------------------------------------------------------------------------------
