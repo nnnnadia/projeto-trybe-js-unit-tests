@@ -50,7 +50,7 @@ describe(`10 - Implemente os casos de teste e a função 'createMenu'`, () => {
     let objetoRetornado = createMenu();
     expect(typeof objetoRetornado.fetchMenu).toBe('function');
     // Verifica se 'objetoRetornado.fetchMenu()' retorna um objeto cujas chaves são somente 'food' e 'drink'
-    let menu = { food: {}, drink: {} }
+    let menu = { food: {}, drinks: {} }
     objetoRetornado = createMenu(menu);
     expect(objetoRetornado.fetchMenu()).toEqual(menu);
     // Verifica se quando createMenu recebe um menu ele é devolvido quando chamado fetchMenu()
@@ -61,14 +61,14 @@ describe(`10 - Implemente os casos de teste e a função 'createMenu'`, () => {
     // Agora faça o PASSO 1 no arquivo `src/restaurant.js`. ||
     // ---------------------------------------------------- ||
     // Verifica se 'objetoRetornado.consumption', após a criação do menu, retorna um array vazio.
-    menu = { food: {}, drink: {} };
+    menu = { food: {}, drinks: {} };
     objetoRetornado = createMenu(menu);
     expect(objetoRetornado.consumption).toEqual([]);
     // ---------------------------------------------------- ||
     // Agora faça o PASSO 2 no arquivo `src/restaurant.js`. ||
     // ---------------------------------------------------- ||
     // Verifica se ao chamar order com uma string ela é adicionada em 'objetoRetornado.consumption'
-    menu = { food: {}, drink: {} };
+    menu = { food: {}, drinks: {} };
     objetoRetornado = createMenu(menu);
     objetoRetornado.order("coxinha");
     expect(objetoRetornado.consumption).toEqual(["coxinha"]);
@@ -76,7 +76,7 @@ describe(`10 - Implemente os casos de teste e a função 'createMenu'`, () => {
     // Agora faça o PASSO 3 no arquivo `src/restaurant.js`. ||
     // ---------------------------------------------------- ||
     // Verifica se ao chamar order com vários valores eles são adicionados em 'objetoRetornado.consumption'
-    menu = { food: {}, drink: {} };
+    menu = { food: {}, drinks: {} };
     objetoRetornado = createMenu(menu);
     objetoRetornado.order("coxinha");
     objetoRetornado.order("agua");
@@ -84,7 +84,7 @@ describe(`10 - Implemente os casos de teste e a função 'createMenu'`, () => {
     objetoRetornado.order("sashimi");
     expect(objetoRetornado.consumption).toEqual(["coxinha", "agua", "sopa", "sashimi"]);
     // Verifica se ao chamar order com valores repetidos eles são adicionados em 'objetoRetornado.consumption'
-    menu = { food: {}, drink: {} };
+    menu = { food: {}, drinks: {} };
     objetoRetornado = createMenu(menu);
     objetoRetornado.order("coxinha");
     objetoRetornado.order("agua");
