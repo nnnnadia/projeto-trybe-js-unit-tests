@@ -68,16 +68,24 @@
 // // Essa função deve ser associada à chave `order` de `restaurant`
 // ```
 
-const orderFromMenu = (request, createdMenu) => {
-  createdMenu.consumption.push(request);
-};
-
 function createMenu(menuObj) {
-  return ({ 
+  const table = { 
     fetchMenu: () => menuObj,
     consumption: [],
-    order: orderFromMenu,
-  });
+    order: (request) => table.consumption.push(request),
+    pay: () => {
+      const bill = table.consumption
+        .map((item) => {
+          if (table.fetchMenu().food[item] !== undefined) {
+            return table.fetchMenu().food[item];
+          }
+          return table.fetchMenu().drinks[item];
+        });
+      const total = bill.reduce((acc, curr) => acc + curr);
+      return total;
+    },
+  };
+  return table;
 }
 
 // Agora faça o TESTE 6 no arquivo `tests/restaurant.spec.js`.
